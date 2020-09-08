@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head th:include="CDN.html">
+<meta charset="ISO-8859-1">
+<title>Lista Contatti</title>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h2>Rubrica</h2>
+		</div>
+		<table class="table table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Telefono</th>
+					<th>Email</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="contatto:${contatti}">
+					<td th:text="*{contatto.nome}"></td>
+					<td th:text="*{contatto.cognome}"></td>
+					<td th:text="*{contatto.telefono}"></td>
+					<td th:text="*{contatto.email}"></td>
+					<td>
+						<form th:action="@{|/eliminacontatto/${contatto.id}|}">
+							<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+						</form>
+				</tr>
+			</tbody>
+		</table>
+		
+		<form th:action="@{/nuovocontatto}">
+			<button type="submit" class="btn btn-success">Nuovo Contatto <span class="glyphicon glyphicon-plus"></span></button>
+		</form>
+	</div>
+</body>
+</html>

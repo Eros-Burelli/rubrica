@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head th:include="CDN.html">
+<meta charset="ISO-8859-1">
+<title>Nuovo Contatto</title>
+</head>
+<body>
+	<div class="container">
+		<div class="page-header">
+			<h2>Aggiungi nuovo contatto</h2>
+		</div>
+		<form method="post" th:action="@{/salvacontatto}" th:object="${contatto}">
+			<div class="form-content">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Nome *" value="" th:field="*{nome}" required>
+						</div>
+							<div class="form-group">
+							<input type="text" class="form-control" placeholder="Cognome *" value="" th:field="*{cognome}" required>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Telefono *" value="" th:field="*{telefono}" required> 
+						</div>
+							<div class="form-group">
+							<input type="text" class="form-control" placeholder="Email *" value="" th:field="*{email}" required>
+						</div>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-success">Salva <span class="glyphicon glyphicon-ok"></span></button>
+			</div>
+		</form>
+		<br>
+		<form th:action="@{/}">
+			<button type="submit" class="btn btn-danger">Indietro</button>
+		</form>
+	</div>
+</body>
+</html>
